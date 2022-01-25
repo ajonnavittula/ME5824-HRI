@@ -20,4 +20,12 @@ for interaction in range (10000):
             V1[s_idx] = R[s_idx]
             continue
 
-        next_state =
+        next_state_V = np.zeros(len(A))
+        for a_idx in range (len(A)):
+            next_state_V[a_idx] = np.sum(np.multiply(transition(S[s_idx,:], A[a_idx,:], S)))
+
+        V1[s_idx] = R[s_idx] + gamma * max(next_state_V)
+
+    V = V1
+
+
