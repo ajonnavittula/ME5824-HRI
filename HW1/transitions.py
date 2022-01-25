@@ -12,18 +12,19 @@ def transitions(s, a, S):
     else:
         P[s_index] = 0.8
 
-    a1 = np.array([[0, -1], [1, 0]]) * a.T
+    a1 = np.array([[0, -1], [1, 0]]).dot(a)
+
     s1 = s + a1
-    if np.where((S[:,0] == s[0]) & (S[:,1]==s[1]))[0]:
-        P[np.where((S[:,0] == s[0]) & (S[:,1]==s[1]))[0]] = 0.1
+    if np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]:
+        P[np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]] = 0.1
     else:
         P[s_index] += 0.1
 
-    a1 = np.array([[0, 1], [-1, 0]]) * a.T
+    a1 = np.array([[0, 1], [-1, 0]]).dot(a)
     s1 = s + a1
-    if np.where((S[:,0] == s[0]) & (S[:,1]==s[1]))[0]:
-        P[np.where((S[:,0] == s[0]) & (S[:,1]==s[1]))[0]] = 0.1
+    if np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]:
+        P[np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]] = 0.1
     else:
         P[s_index] += 0.1    
-
+    # print(P)
     return P
