@@ -1,4 +1,5 @@
 import numpy as np
+from transitions import transitions
 
 
 S = np.array([[1, 1], [2, 1], [3, 1], [4, 1], [1, 2], [3, 2], [4, 2], [1, 3], [2, 3], [3, 3], [4, 3]])
@@ -23,7 +24,7 @@ for interaction in range (10000):
 
         next_state_V = np.zeros(len(A))
         for a_idx in range (len(A)):
-            next_state_V[a_idx] = np.sum(np.multiply(transition(S[s_idx,:], A[a_idx,:], S)))
+            next_state_V[a_idx] = np.sum(np.multiply(transitions(S[s_idx,:], A[a_idx,:], S)))
 
         V1[s_idx] = R[s_idx] + gamma * max(next_state_V)
 
