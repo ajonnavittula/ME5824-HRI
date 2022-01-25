@@ -7,22 +7,22 @@ def transitions(s, a, S):
 
     s1 = s + a
     if np.where(S==s1):
-        P(np.where(S==s1)) = 0.8
+        P[np.where(S==s1)] = 0.8
     else:
-        P(s_index) = 0.8
+        P[s_index] = 0.8
 
     a1 = np.array([[0, -1], [1, 0]]) * a.T
     s1 = s + a1
     if np.where(S==s1):
-        P(np.where(S==s1)) = 0.1
+        P[np.where(S==s1)] = 0.1
     else:
-        P(s_index) += 0.1
+        P[s_index] += 0.1
 
     a1 = np.array([[0, 1], [-1, 0]]) * a.T
     s1 = s + a1
     if np.where(S==s1):
-        P(np.where(S==s1)) = 0.1
+        P[np.where(S==s1)] = 0.1
     else:
-        P(s_index) += 0.1    
+        P[s_index] += 0.1    
 
     return P
