@@ -1,5 +1,6 @@
 import numpy as np
 from transitions import transitions
+import sys
 S = np.array([[1, 1], [2, 1], [3, 1], [4, 1], [1, 2], [3, 2], [4, 2], [1, 3], [2, 3], [3, 3], [4, 3]])
 
 A = np.array([[1, 0], [-1, 0], [0, 1], [0, -1]])
@@ -25,13 +26,13 @@ def main():
             next_state_V = np.zeros(len(A))
             for a_idx in range (len(A)):
                 transition = transitions(S[s_idx,:], A[a_idx,:], S)
-                print(np.multiply(transition, V))
+                # sys.exit()
                 next_state_V[a_idx] = np.sum(np.multiply(transition, V))
 
             V1[s_idx] = R[s_idx] + gamma * np.max(next_state_V)
 
         V = np.copy(V1)
-        # print(V)
+    print(V)
 
 if __name__ == "__main__":
     main()
