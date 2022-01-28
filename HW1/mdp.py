@@ -13,11 +13,11 @@ def transitions(s, a, S):
     
     s1 = s + a 
     # if s[0] == 2 and s[1] == 1 and a[0] == -1 and a[1] ==0:
-    #     print(np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0])
+    #     print(np.size(np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]))
 
-    if np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]:
-        if s[0] == 2 and s[1] == 1 and a[0] == -1 and a[1] ==0:
-            print (s1)
+    if np.size(np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]):
+        # if s[0] == 2 and s[1] == 1 and a[0] == -1 and a[1] ==0:
+            # print (s1)
         P[np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]] = 0.8
     else:
         P[s_index] = 0.8
@@ -28,7 +28,7 @@ def transitions(s, a, S):
     # if s[0] == 2 and s[1] == 1 and a[0] == -1 and a[1] ==0:
     #     print(s1)
 
-    if np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]:
+    if np.size(np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]):
         P[np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]] = 0.1
     else:
         P[s_index] += 0.1
@@ -38,7 +38,7 @@ def transitions(s, a, S):
     # if s[0] == 2 and s[1] == 1 and a[0] == -1 and a[1] ==0:
         # print(a)
 
-    if np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]:
+    if np.size(np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]):
         P[np.where((S[:,0] == s1[0]) & (S[:,1]==s1[1]))[0]] = 0.1
     else:
         P[s_index] += 0.1    
@@ -89,9 +89,9 @@ def main():
         if np.linalg.norm(V-V_prime) < 1e-6:
             done  = True 
     
-    # print(V)
-    # print(policy)
-        iter+=1
+    print(V)
+    print(policy)
+    iter+=1
 
 if __name__ == "__main__":
     main()
