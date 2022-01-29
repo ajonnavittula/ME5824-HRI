@@ -42,14 +42,15 @@ def transitions(s, a, S):
 
 def QMDP():
     b = [0.1, 0.2, 0.7]
-    Q_mat_1 = np.load('Q_mat_-0.9.npy')
-    Q_mat_2 = np.load('Q_mat_0.1.npy')
-    Q_mat_3 = np.load('Q_mat_2.0.npy')
+    Q_mat_1 = np.load('Q_mat_-2.0.npy')
+    Q_mat_2 = np.load('Q_mat_0.5.npy')
+    Q_mat_3 = np.load('Q_mat_-0.5.npy')
     policy_Q = np.zeros((11,4))
 
     for s_idx in range (len(S)):
         if s_idx == 6 or s_idx == 10:
             policy_Q[s_idx, :] = np.array([S[s_idx,0], S[s_idx,1], 0., 0.])
+            continue
 
         next_state_Q = np.zeros(len(A))
 
