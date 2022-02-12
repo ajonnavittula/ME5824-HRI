@@ -56,6 +56,7 @@ def QMDP():
 
         for a_idx in range (len(A)):
             next_state_Q[a_idx] = b[0] * Q_mat_1[s_idx,a_idx] + b[1] * Q_mat_2[s_idx,a_idx] + b[2] * Q_mat_3[s_idx,a_idx]
+        print(np.max(next_state_Q))
         
         max_Q_id = np.where(next_state_Q == np.max(next_state_Q))
         max_Q_idx = max_Q_id[0][0]
@@ -69,8 +70,8 @@ def QMDP():
 
 
 def main():
-    gamma = 1.0
-    r_empty = -0.5
+    gamma = 0.7
+    r_empty = 0.1
     R = np.ones(11)*r_empty
     R[10] = 1
     R[6] = -1
@@ -110,19 +111,13 @@ def main():
         if np.linalg.norm(V-V_prime) < 1e-6:
             done  = True 
 
-        if gamma == 1.0 and r_empty > 0:
-            R_prime = np.ones(11)*r_empty
-            R_prime[10] = 0
-            R_prime[6] = 0
-            if np.linalg.norm(V-V_prime-R_prime) < 1e-6:
-                done = True
         iter+=1
     
-    print(V)
-    print(policy)
-    print(Q)
+    print("The Value function is", V)
+    print("The Q matrix is ", Q)
+    print("policy for r_empty = {}, is {}".format(r_empty,policy))
     # np.save(save_name, Q)
-    QMDP()
+    # QMDP()
 
 
     
