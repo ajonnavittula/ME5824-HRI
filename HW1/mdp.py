@@ -39,6 +39,7 @@ def value_iteration(gamma, r_empty):
     n_states = len(S)
     n_actions = len(A)
     R = np.ones(n_states) * r_empty
+    
     R[10] = 1
     R[6] = -1
 
@@ -74,7 +75,7 @@ def value_iteration(gamma, r_empty):
             converged = True
 
     return V, Q, policy
-
+  
 def main():
     gamma = 1.0
     r_empty = -0.5
